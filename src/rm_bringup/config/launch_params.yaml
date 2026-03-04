@@ -1,0 +1,15 @@
+# ===== 全局启动参数 =====
+
+# 坐标变换: 里程计系到相机系
+odom2camera:
+  xyz: "0.0 0.0 0.0"
+  rpy: "0.0 0.0 0.0"
+
+# ROS2命名空间
+namespace: ''
+
+# 使用虚拟串口 (调试模式)
+virtual_serial: true
+
+# 相机类型: 'opencv' (通用), 'hik' (海康), 'dahua' (大华)
+camera: 'opencv'

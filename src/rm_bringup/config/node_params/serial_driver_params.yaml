@@ -1,0 +1,6 @@
+# ===== 串口驱动参数 =====
+serial_driver:
+  ros__parameters:
+    port_name: "/dev/ttyUSB0"
+    baud_rate: 115200
+    enable_data_print: false

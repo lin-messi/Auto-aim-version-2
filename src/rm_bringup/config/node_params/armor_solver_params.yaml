@@ -1,0 +1,37 @@
+# ===== 装甲板解算器参数 =====
+armor_solver:
+  ros__parameters:
+    debug: false
+
+    # --- EKF过程噪声 ---
+    ekf:
+      sigma2_q_x: 0.008
+      sigma2_q_y: 0.008
+      sigma2_q_z: 0.008
+      sigma2_q_yaw: 1.30
+      sigma2_q_r: 98.0
+      # EKF观测噪声
+      r_x: 0.0005
+      r_y: 0.0005
+      r_z: 0.0005
+      r_yaw: 0.005
+
+    # --- 跟踪器参数 ---
+    tracker:
+      max_match_distance: 0.5
+      max_match_yaw_diff: 0.67
+      tracking_thres: 3
+      lost_time_thres: 3.05
+
+    # --- 弹道解算参数 ---
+    solver:
+      bullet_speed: 30.0             # 弹丸初速 m/s (可由串口反馈动态更新)
+      gravity: 9.82                  # 重力加速度 m/s²
+      resistance: 0.092              # 空气阻力系数
+      max_tracking_v_yaw: 60.0       # 小陀螺角速度阈值 rad/s
+      side_angle: 15.0               # 切换装甲板角度阈值 度
+      coming_angle: 1.222            # 小陀螺出现角 (~70°)
+      leaving_angle: 0.524           # 小陀螺消失角 (~30°)
+      latency_compensation: 0.02     # 系统总延迟补偿 秒 (图像采集+处理+通信+机械)
+      fire_yaw_threshold: 0.05       # 开火yaw允许误差 rad (~2.9°)
+      fire_pitch_threshold: 0.05     # 开火pitch允许误差 rad (~2.9°)

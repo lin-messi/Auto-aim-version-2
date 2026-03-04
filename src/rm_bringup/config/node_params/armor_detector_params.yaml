@@ -1,0 +1,38 @@
+# ===== 装甲板检测器参数 =====
+armor_detector:
+  ros__parameters:
+    # 调试模式
+    debug: true
+
+    # 目标颜色: 0=BLUE, 1=RED (可由串口反馈动态切换)
+    detect_color: 1
+
+    # 二值化阈值 (通道相减后的阈值，建议比灰度阈值低)
+    binary_threshold: 40
+
+    # --- 灯条参数 ---
+    light:
+      min_ratio: 0.0001
+      max_ratio: 20.0
+      max_angle: 40.0
+      color_diff_thresh: 20
+
+    # --- 装甲板匹配参数 ---
+    armor:
+      min_small_center_distance: 0.8
+      max_small_center_distance: 3.5
+      min_large_center_distance: 3.5
+      max_large_center_distance: 8.0
+      max_angle: 35.0
+      min_length_ratio: 0.3          # 左右灯条长度比下限
+      min_width_ratio: 0.3           # 左右灯条宽度比下限
+      max_light_angle_diff: 15.0     # 左右灯条倾斜角最大差值(度)
+
+    # --- 分类器参数 ---
+    classifier:
+      confidence: 0.7
+
+    # --- PnP解算参数 ---
+    estimator:
+      optimize_yaw: false
+      search_range: 140.0

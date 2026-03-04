@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rm_gimbal">
+
+  <!-- 参数 -->
+  <xacro:arg name="xyz" default="0.0 0.0 0.0"/>
+  <xacro:arg name="rpy" default="0.0 0.0 0.0"/>
+
+  <!-- 里程计坐标系 (世界系) -->
+  <link name="odom"/>
+
+  <!-- 云台基座 -->
+  <link name="gimbal_base">
+    <visual>
+      <geometry>
+        <box size="0.05 0.05 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- 相机光学坐标系 -->
+  <link name="camera_optical_frame"/>
+
+  <!-- odom -> gimbal_base -->
+  <joint name="odom_to_gimbal" type="fixed">
+    <parent link="odom"/>
+    <child link="gimbal_base"/>
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+  </joint>
+
+  <!-- gimbal_base -> camera_optical_frame -->
+  <joint name="gimbal_to_camera" type="fixed">
+    <parent link="gimbal_base"/>
+    <child link="camera_optical_frame"/>
+    <origin xyz="$(arg xyz)" rpy="$(arg rpy)"/>
+  </joint>
+
+</robot>
