@@ -3,10 +3,10 @@
 基于传统视觉 + EKF 的 RoboMaster 自瞄系统，使用 ROS2 构建。
 
 ## 编译运行
-cd ~/auto-aim
-colcon build --symlink-install
-source install/setup.bash
-ros2 launch rm_bringup bringup.launch.py
+- cd ~/auto-aim
+- colcon build --symlink-install
+- source install/setup.bash
+- ros2 launch rm_bringup bringup.launch.py
 
 
 
